@@ -1,0 +1,31 @@
+div#board .row{
+
+}
+
+	div#board div.row div.board{
+		border: 1px solid #CCC;
+		border-radius: 5px;
+	}
+		div#board div.row section{
+			background: #FEFDDE;
+			display: block;
+			margin: 5px;
+			border: 1px solid #CCC;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+		div#board div.row section:hover{
+			background: #B8DBD3;
+		}
+
+			div#board div.row section h4{
+				padding: 5px;
+				font-size: 20px;
+			}
+			div#board div.row section p{
+				font-weight: normal;
+				padding: 5px;
+				font-size: 15px;
+				color: #616161;
+
+			}

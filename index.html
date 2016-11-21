@@ -1,17 +1,38 @@
 <!doctype html>
-<html ng-app>
+<html>
   <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="views/board.css">
     <script src="/js/angular.1.5.8.min.js"></script>
+    <script src="/services/issueService.js"></script>
+    <script src="/views/board/boardController.js"></script>
   </head>
-  <body>
+  <body >
     <div>
-     <div id="board" class="container" ng-ctrl="boardController">
-     	
-     	
+     <div id="board" class="container" ng-app="boardApp" ng-controller="boardController as ctrl" >
+     	<div class="row">
+			<div class="board col-md-4">
+				<head><h4>To-Do</h4></head>
+					<section ng-repeat="issue in issues | filter: {'status':'to-do'}">
+						<div class="issues">{{issue.title}}</div>
+					</section>
+			</div>
+			<div class="board col-md-4">
+				<head><h4>IN Progres</h4></head>
+					<section ng-repeat="issue in issues | filter: {'status':'in-progress'}">
+						<div class="issues">{{issue.title}}</div>
+					</section>
+			</div>
+			<div class="board col-md-4">
+				<head><h4>Done</h4></head>
+					<section ng-repeat="issue in issues | filter: {'status':'done'}">
+						<div class="issues">{{issue.title}}</div>
+					</section>
+			</div>	
+		</div>
+
     </div>
   </body>
 </html>

@@ -1,14 +1,17 @@
 <!doctype html>
 <html ng-app>
   <head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="views/board.css">
     <script src="/js/angular.1.5.8.min.js"></script>
   </head>
   <body>
     <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
+     <div id="board" class="container" ng-ctrl="boardController">
+     	
+     	
     </div>
   </body>
 </html>

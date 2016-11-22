@@ -5,7 +5,7 @@ angular.module('boardApp').controller('boardController', [
 /*
 		issueService.getTicket().then(function(response){
 			angular.forEach(response.data, function(issues) {
-				$scope.issues = issues.issues;
+				vm.issues = issues.issues;
 			});
 		});
 */

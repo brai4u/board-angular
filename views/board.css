@@ -29,3 +29,7 @@ div#board .row{
 				color: #616161;
 
 			}
+
+section{
+	cursor: pointer;
+}

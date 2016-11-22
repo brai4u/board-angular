@@ -14,5 +14,11 @@ angular.module('boardApp').controller('boardController', [
 		}, function(issues) {
 			console.log(issues)
 		});
+
+
+		vm.cambiarestado = function(estado, issue){
+			issue.status = estado;
+		};
 	}
+
 ]);

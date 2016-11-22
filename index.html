@@ -1,63 +1,52 @@
 <!doctype html>
+
 <html>
   <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="views/board.css">
-
-	<script>
-	function allowDrop(ev) {
-	    ev.preventDefault();
-	}
-
-	function drag(ev) {
-	    ev.dataTransfer.setData("text", ev.target.id);
-	}
-
-	function drop(ev) {
-	    ev.preventDefault();
-	    var data = ev.dataTransfer.getData("text");
-	    if(ev.target.className.includes("ticket")){
-	    	return;
-	    }
-
-	    ev.target.appendChild(document.getElementById(data));
-	}
-
-	function nodrop(ev){
-		ev.preventDefault();
-	}
-	</script>
-
   </head>
   <body ng-app="boardApp">
     <div>
      <div id="board" class="container" ng-controller="boardController as ctrl" >
      	<div class="row">
-			<div  id="div1" class="board col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<head><h4>IN Progres</h4></head>
-					<section class="ticket" ondrop="nodrop(ev);" ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" draggable="true" ondragstart="drag(event)" id="{{issue.id}}">
+			<div  id="div1" class="board col-md-4">
+				<head><h4>TO-DO</h4></head>
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" id="{{issue.id}}">
 						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
 						<p class="ticket">{{issue.description}}</p>
+						<div class="btn-group text-center">
+							<button class="btn btn-primary" ng-click="ctrl.cambiarestado('in-progress', issue)">in-progress</button>
+							<button class="btn btn-primary" ng-click="ctrl.cambiarestado('done', issue)">done</button>
+						</div>
 					</section> 
 			</div>
-			<div  id="div2" class="board col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<div  id="div2" class="board col-md-4">
 				<head><h4>IN Progres</h4></head>
-					<section class="ticket" ondrop="nodrop(ev);" ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" draggable="true" ondragstart="drag(event)" id="{{issue.id}}">
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" id="{{issue.id}}">
 						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
 						<p class="ticket">{{issue.description}}</p>
+						<div class="btn-group text-center">
+							<button class="btn btn-primary" ng-click="ctrl.cambiarestado('to-do', issue)">to-do</button>
+							<button class="btn btn-primary" ng-click="ctrl.cambiarestado('done', issue)">done</button>
+						</div>
 					</section> 
 			</div>
-			<div id="div3" class="board col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<div id="div3" class="board col-md-4">
 				<head><h4>Done</h4></head>
-					<section class="ticket"  ondrop="nodrop(ev);" class="ticket" ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" draggable="true" ondragstart="drag(event)" id="{{issue.id}}">
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" id="{{issue.id}}">
 						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
 						<p class="ticket">{{issue.description}}</p>
-					</section>
-			</div>	
-		</div>
 
+						<div class="btn-group text-center">
+							<button class="btn btn-primary" ng-click="ctrl.cambiarestado('in-progress', issue)">in-progress</button>
+							<button class="btn btn-primary" ng-click="ctrl.cambiarestado('to-do', issue)">to-do</button>
+						</div>
+					</section>
+			</div>
+
+		</div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

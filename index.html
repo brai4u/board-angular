@@ -5,39 +5,66 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="views/board.css">
+
+	<script>
+	function allowDrop(ev) {
+	    ev.preventDefault();
+	}
+
+	function drag(ev) {
+	    ev.dataTransfer.setData("text", ev.target.id);
+	}
+
+	function drop(ev) {
+	    ev.preventDefault();
+	    var data = ev.dataTransfer.getData("text");
+	    if(ev.target.className.includes("ticket")){
+	    	return;
+	    }
+
+	    ev.target.appendChild(document.getElementById(data));
+	}
+
+	function nodrop(ev){
+		ev.preventDefault();
+	}
+	</script>
+
   </head>
   <body ng-app="boardApp">
     <div>
      <div id="board" class="container" ng-controller="boardController as ctrl" >
      	<div class="row">
-			<div class="board col-md-4">
-				<head><h4>To-Do</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" dnd-draggable="item" draggable="true" dnd-effect-allowed="move" dnd-moved="list.splice($index, 1)">
-						<h4>#{{issue.id}} - {{issue.title}}</h4>
-						<p>{{issue.description}}</p>
-					</section>
-			</div>
-			<div class="board col-md-4">
+			<div  id="div1" class="board col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
 				<head><h4>IN Progres</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" draggable="true">
-						<h4>#{{issue.id}} - {{issue.title}}</h4>
-						<p>{{issue.description}}</p>
-					</section>
+					<section class="ticket" ondrop="nodrop(ev);" ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" draggable="true" ondragstart="drag(event)" id="{{issue.id}}">
+						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
+						<p class="ticket">{{issue.description}}</p>
+					</section> 
 			</div>
-			<div class="board col-md-4">
+			<div  id="div2" class="board col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<head><h4>IN Progres</h4></head>
+					<section class="ticket" ondrop="nodrop(ev);" ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" draggable="true" ondragstart="drag(event)" id="{{issue.id}}">
+						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
+						<p class="ticket">{{issue.description}}</p>
+					</section> 
+			</div>
+			<div id="div3" class="board col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
 				<head><h4>Done</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" draggable="true">
-						<h4>#{{issue.id}} - {{issue.title}}</h4>
-						<p>{{issue.description}}</p>
+					<section class="ticket"  ondrop="nodrop(ev);" class="ticket" ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" draggable="true" ondragstart="drag(event)" id="{{issue.id}}">
+						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
+						<p class="ticket">{{issue.description}}</p>
 					</section>
 			</div>	
 		</div>
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="/js/angular.1.5.8.min.js"></script>
     <script src="/app.js"></script>
     <script src="/services/issueService.js"></script>
     <script src="/views/board/boardController.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/fatlinesofcode/ngDraggable/master/ngDraggable.js"></script>
   </body>
 </html>

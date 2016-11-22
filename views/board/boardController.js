@@ -10,14 +10,23 @@ angular.module('boardApp').controller('boardController', [
 		});
 */
 		issueService.getTicketProcessed().then(function(issues){
+			//console.log(issues);
 			vm.issues = issues;
+
 		}, function(issues) {
-			console.log(issues)
+			
 		});
 
 
 		vm.changestatus = function(status, issue){
 			issue.status = status;
+
+			var db = new PouchDB('http://localhost:5984/board');
+			
+			db.get(issue._id).then(function (doc) {
+			  doc.status = status;
+			  return db.put(doc);
+			});
 		};
 	}
 

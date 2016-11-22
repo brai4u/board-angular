@@ -13,8 +13,9 @@
      	<div class="row">
 			<div  id="div1" class="board col-md-4">
 				<head><h4>TO-DO</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" id="{{issue.id}}">
-						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
+
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" id="{{issue._id}}">
+						<h4 class="ticket" >#{{issue._id}} - {{issue.title}}</h4>
 						<p class="ticket">{{issue.description}}</p>
 						<div class="btn-group text-center">
 							<button class="btn btn-primary" ng-click="ctrl.changestatus('in-progress', issue)">in-progress</button>
@@ -24,8 +25,8 @@
 			</div>
 			<div  id="div2" class="board col-md-4">
 				<head><h4>IN Progres</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" id="{{issue.id}}">
-						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" id="{{issue._id}}">
+						<h4 class="ticket" >#{{issue._id}} - {{issue.title}}</h4>
 						<p class="ticket">{{issue.description}}</p>
 						<div class="btn-group text-center">
 							<button class="btn btn-primary" ng-click="ctrl.changestatus('to-do', issue)">to-do</button>
@@ -35,8 +36,8 @@
 			</div>
 			<div id="div3" class="board col-md-4">
 				<head><h4>Done</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" id="{{issue.id}}">
-						<h4 class="ticket" >#{{issue.id}} - {{issue.title}}</h4>
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" id="{{issue._id}}">
+						<h4 class="ticket" >#{{issue._id}} - {{issue.title}}</h4>
 						<p class="ticket">{{issue.description}}</p>
 
 						<div class="btn-group text-center">
@@ -50,10 +51,10 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="/js/angular.1.5.8.min.js"></script>
+    <script src="/js/angular.js"></script>
     <script src="/app.js"></script>
     <script src="/services/issueService.js"></script>
     <script src="/views/board/boardController.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/fatlinesofcode/ngDraggable/master/ngDraggable.js"></script>
+	<script src="//cdn.jsdelivr.net/pouchdb/6.0.7/pouchdb.min.js"></script>
   </body>
 </html>

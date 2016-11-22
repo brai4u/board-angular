@@ -12,21 +12,21 @@
      	<div class="row">
 			<div class="board col-md-4">
 				<head><h4>To-Do</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}">
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" dnd-draggable="item" draggable="true" dnd-effect-allowed="move" dnd-moved="list.splice($index, 1)">
 						<h4>#{{issue.id}} - {{issue.title}}</h4>
 						<p>{{issue.description}}</p>
 					</section>
 			</div>
 			<div class="board col-md-4">
 				<head><h4>IN Progres</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}">
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" draggable="true">
 						<h4>#{{issue.id}} - {{issue.title}}</h4>
 						<p>{{issue.description}}</p>
 					</section>
 			</div>
 			<div class="board col-md-4">
 				<head><h4>Done</h4></head>
-					<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}">
+					<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" draggable="true">
 						<h4>#{{issue.id}} - {{issue.title}}</h4>
 						<p>{{issue.description}}</p>
 					</section>

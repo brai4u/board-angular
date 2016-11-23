@@ -21,7 +21,7 @@ angular.module('boardApp').controller('boardController', [
 		vm.changestatus = function(status, issue){
 			issue.status = status;
 
-			var db = new PouchDB('http://192.168.88.42:5984/board');
+			var db = new PouchDB('http://localhost:5984/board');
 			
 			db.get(issue._id).then(function (doc) {
 			  doc.status = status;

@@ -1,1 +1,1 @@
-angular.module('boardApp', []);
+var app = angular.module('boardApp', ["ngRoute"]);

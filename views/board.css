@@ -33,3 +33,9 @@ div#board .row{
 section{
 	cursor: pointer;
 }
+
+.create-ticket{
+	width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+}

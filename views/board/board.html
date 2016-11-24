@@ -4,7 +4,7 @@
 	<head><h4>TO-DO</h4></head>
 
 		<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" id="{{issue._id}}">
-			<h4 class="ticket" >#{{issue._id}} - {{issue.title}}</h4>
+			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>
 			<div class="btn-group text-center">
 				<button class="btn btn-primary" ng-click="ctrl.changestatus('in-progress', issue)">in-progress</button>
@@ -15,7 +15,7 @@
 <div  id="div2" class="board col-md-4">
 	<head><h4>IN Progres</h4></head>
 		<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" id="{{issue._id}}">
-			<h4 class="ticket" >#{{issue._id}} - {{issue.title}}</h4>
+			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>
 			<div class="btn-group text-center">
 				<button class="btn btn-primary" ng-click="ctrl.changestatus('to-do', issue)">to-do</button>
@@ -26,7 +26,7 @@
 <div id="div3" class="board col-md-4">
 	<head><h4>Done</h4></head>
 		<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" id="{{issue._id}}">
-			<h4 class="ticket" >#{{issue._id}} - {{issue.title}}</h4>
+			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>
 
 			<div class="btn-group text-center">

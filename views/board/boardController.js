@@ -28,6 +28,21 @@ angular.module('boardApp').controller('boardController', [
 			  return db.put(doc);
 			});
 		};
+
+		vm.submit = function(){
+			var db = new PouchDB('http://localhost:5984/board');
+			var issue = {
+			  "title": vm.title,
+			  "description": vm.description,
+			  "status": vm.status
+			};
+
+			db.post(issue, function (error){
+				if(error){
+					alert("error saving in de db");
+				}
+			});
+		};
 	}
 
 ]);

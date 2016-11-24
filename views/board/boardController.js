@@ -1,6 +1,7 @@
 angular.module('boardApp').controller('boardController', [
 	'issueService',
-	function(issueService) {
+	'$route',
+	function(issueService, $route) {
 		vm = this;
 /*
 		issueService.getTicket().then(function(response){
@@ -38,8 +39,13 @@ angular.module('boardApp').controller('boardController', [
 			};
 
 			db.post(issue, function (error){
+
 				if(error){
-					alert("error saving in de db");
+					vm.create_status = "error saving in the db";
+				}else{
+
+					vm.create_status = issue.title + " save in the db with trhe status: " + issue.status;
+					$route.reload();
 				}
 			});
 		};

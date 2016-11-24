@@ -1,0 +1,12 @@
+*.ldb
+*.log
+CURRENT
+LOCK
+LOG
+LOG.old
+log.txt
+MANIFEST-*
+pouch__all_dbs__
+_replicator
+_users
+config.json

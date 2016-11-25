@@ -22,7 +22,7 @@ angular.module('boardApp').controller('boardController', [
 		vm.changestatus = function(status, issue){
 			issue.status = status;
 
-			var db = new PouchDB('http://localhost:5984/board');
+			var db = new PouchDB(dburl);
 			
 			db.get(issue._id).then(function (doc) {
 			  doc.status = status;
@@ -31,7 +31,7 @@ angular.module('boardApp').controller('boardController', [
 		};
 
 		vm.submit = function(){
-			var db = new PouchDB('http://localhost:5984/board');
+			var db = new PouchDB(dburl);
 			var issue = {
 			  "title": vm.title,
 			  "description": vm.description,
@@ -43,8 +43,8 @@ angular.module('boardApp').controller('boardController', [
 				if(error){
 					vm.create_status = "error saving in the db";
 				}else{
-
-					vm.create_status = issue.title + " save in the db with trhe status: " + issue.status;
+					vm.classAlert = "alert alert-success text-center"
+					vm.create_status = "issue created"
 					$route.reload();
 				}
 			});

@@ -1,7 +1,7 @@
+<a href="#/create">+ create a new issue</a>
 <div class="row">
 <div  id="div1" class="board col-md-4">
-<a href="#/create">test</a>
-	<head><h4>TO-DO</h4></head>
+	<div class="to-do"><h4>TO-DO</h4></div>
 
 		<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" id="{{issue._id}}">
 			<h4 class="ticket" >{{issue.title}}</h4>
@@ -13,7 +13,7 @@
 		</section> 
 </div>
 <div  id="div2" class="board col-md-4">
-	<head><h4>IN Progres</h4></head>
+	<div class="in-progress"><h4>IN Progres</h4></div>
 		<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" id="{{issue._id}}">
 			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>
@@ -24,7 +24,7 @@
 		</section> 
 </div>
 <div id="div3" class="board col-md-4">
-	<head><h4>Done</h4></head>
+	<div class="done"><h4>Done</h4></div>
 		<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" id="{{issue._id}}">
 			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>

@@ -4,7 +4,7 @@ div#board .row{
 
 	div#board div.row div.board{
 		border: 1px solid #CCC;
-		border-radius: 5px;
+		border-radius: 3px;
 	}
 		div#board div.row section{
 			background: #FEFDDE;
@@ -42,4 +42,8 @@ section{
 
 .alert{
     margin-top: 73px;
+}
+
+#board{
+	margin-top: 40px;
 }

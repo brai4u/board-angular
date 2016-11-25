@@ -3,15 +3,7 @@ angular.module('boardApp').controller('boardController', [
 	'$route',
 	function(issueService, $route) {
 		vm = this;
-/*
-		issueService.getTicket().then(function(response){
-			angular.forEach(response.data, function(issues) {
-				vm.issues = issues.issues;
-			});
-		});
-*/
 		issueService.getTicketProcessed().then(function(issues){
-			//console.log(issues);
 			vm.issues = issues;
 
 		}, function(issues) {
@@ -41,6 +33,7 @@ angular.module('boardApp').controller('boardController', [
 			db.post(issue, function (error){
 
 				if(error){
+					vm.classAlert = "alert alert-danger text-center"
 					vm.create_status = "error saving in the db";
 				}else{
 					vm.classAlert = "alert alert-success text-center"

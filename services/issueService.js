@@ -11,7 +11,7 @@ angular.module('boardApp').service('issueService', [
 		 */
 		this.getTicketProcessed = function() {
 			var defer = $q.defer();
-			var db = new PouchDB('http://localhost:5984/board');
+			var db = new PouchDB(dburl);
 			
 			db.allDocs({
 			  include_docs: true,

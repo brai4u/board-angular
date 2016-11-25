@@ -1,9 +1,9 @@
 <a href="#/create">+ create a new issue</a>
 <div class="row">
-<div  id="div1" class="board col-md-4">
+<div  id="to-do" class="board col-md-4">
 	<div class="to-do"><h4>TO-DO</h4></div>
 
-		<section ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" id="{{issue._id}}">
+		<section class="ticket-todo"  ng-repeat="issue in ctrl.issues | filter: {'status':'to-do'}" id="{{issue._id}}">
 			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>
 			<div class="btn-group text-center">
@@ -12,9 +12,9 @@
 			</div>
 		</section> 
 </div>
-<div  id="div2" class="board col-md-4">
-	<div class="in-progress"><h4>IN Progres</h4></div>
-		<section ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" id="{{issue._id}}">
+<div  id="in-progress" class="board col-md-4">
+	<div class="in-progress"><h4>In - progress</h4></div>
+		<section class="ticket-inprogress" ng-repeat="issue in ctrl.issues | filter: {'status':'in-progress'}" id="{{issue._id}}">
 			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>
 			<div class="btn-group text-center">
@@ -23,9 +23,9 @@
 			</div>
 		</section> 
 </div>
-<div id="div3" class="board col-md-4">
+<div id="done" class="board col-md-4">
 	<div class="done"><h4>Done</h4></div>
-		<section ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" id="{{issue._id}}">
+		<section class="ticket-done" ng-repeat="issue in ctrl.issues | filter: {'status':'done'}" id="{{issue._id}}">
 			<h4 class="ticket" >{{issue.title}}</h4>
 			<p class="ticket">{{issue.description}}</p>
 

@@ -13,21 +13,18 @@ div#to-do section button{
 	color: #fff;
     background-color: #bf4d42;
     border-color: #a04137;
-    margin: 4px;
 }
 
 div#in-progress section button{
     color: #fff;
-    background-color: #c36b1d;
+    background-color: #da6908;
     border-color: #b15a0d;
-    margin: 4px;
 }
 
 div#done section button{
     color: #fff;
     background-color: #34a565;
     border-color: #258c51;
-    margin: 4px;
 }
 
 section{
@@ -98,4 +95,8 @@ section{
     border-radius: 5px;
     overflow: hidden;
     color:#094823;
+}
+
+.btn-group{
+	margin-left: 4px;
 }
